@@ -70,6 +70,9 @@ app.route("/characters")
 
         let filter = { "$and": [nameCharacter, raceCharacter, realmCharacter, cultureCharacter] };
 
+
+        console.log(filter);
+
         try {
             results.results = await Character.find(filter).limit(limit).skip(startIndex).sort({ name: sort }).exec();
             res.json(results);
