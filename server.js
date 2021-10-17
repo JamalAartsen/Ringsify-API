@@ -11,6 +11,10 @@ app.use(express.urlencoded({
 
 mongoose.connect(process.env.DATABASE_URL);
 
+app.get("/", (req, res) => {
+    res.send("Welcom by ringsify");
+});
+
 app.route("/characters")
     //Get all characters from database.
     .get(async (req, res) => {
