@@ -77,7 +77,7 @@ app.route("/characters")
         }
 
     })
-    .post((req, res) => {
+    .post(async (req, res) => {
         const character = new Character({
             name: req.body.name,
             imageUrl: req.body.imageUrl,
