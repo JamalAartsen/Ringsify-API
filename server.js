@@ -12,11 +12,7 @@ app.use(express.urlencoded({
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 
 app.get("/", (req, res) => {
-    res.send("Welcom by ringsify");
-});
-
-app.get("/jamal", (req, res) => {
-   res.send("Jamal Aartsen") 
+    res.send(<h1>Welcome by ringsify</h1>);
 });
 
 app.route("/characters")
