@@ -21,7 +21,7 @@ app.get("/jamal", (req, res) => {
 
 app.route("/characters")
     //Get all characters from database.
-    .get(async (req, res) => {
+    .get((req, res) => {
         let page;
         let limit;
         let startIndex;
@@ -81,7 +81,7 @@ app.route("/characters")
         }
 
     })
-    .post(async (req, res) => {
+    .post((req, res) => {
         const character = new Character({
             name: req.body.name,
             imageUrl: req.body.imageUrl,
