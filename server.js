@@ -74,7 +74,7 @@ app.route("/characters")
         console.log(filter);
 
         try {
-            results.results = await Character.find(filter).limit(limit).skip(startIndex).sort({ name: sort }).exec();
+            results.results = Character.find(filter).limit(limit).skip(startIndex).sort({ name: sort }).exec();
             res.json(results);
         } catch (e) {
             res.status(500).json({ message: e.message });
