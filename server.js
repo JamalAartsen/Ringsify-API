@@ -15,6 +15,10 @@ app.get("/", (req, res) => {
     res.send("Welcom by ringsify");
 });
 
+app.get("/jamal", (req, res) => {
+   res.send("Jamal Aartsen") 
+});
+
 app.route("/characters")
     //Get all characters from database.
     .get(async (req, res) => {
