@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: 'ENV_FILENAME' });
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -9,7 +9,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 
 app.get("/", (req, res) => {
     res.send("Welcom by ringsify");
