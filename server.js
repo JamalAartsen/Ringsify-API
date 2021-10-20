@@ -4,10 +4,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const Character = require("./characters");
+const cors = require("cors");
 
 app.use(express.urlencoded({
     extended: true
 }));
+app.use(cors());
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 
