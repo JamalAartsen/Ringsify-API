@@ -17,6 +17,21 @@ app.get("/", (req, res) => {
     res.send("Welcome by ringsify");
 });
 
+app.get("/characters/:id", (req, res) => {
+    const id = req.params.id;
+    Character.findOne({ _id: id }, function (err, character) {
+        if (err) {
+            res.json({ "error": err });
+        } else {
+            if (character) {
+                res.json(character);
+            } else {
+                res.json({ "empty": "No character found on this id" });
+            }
+        }
+    });
+});
+
 app.route("/characters")
     //Get all characters from database.
     .get(async (req, res) => {
