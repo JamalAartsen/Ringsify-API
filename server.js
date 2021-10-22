@@ -17,7 +17,8 @@ app.get("/", (req, res) => {
     res.send("Welcome by ringsify");
 });
 
-app.get("/characters/:id", (req, res) => {
+app.route("/characters/:id")
+.get((req, res) => {
     const id = req.params.id;
     Character.findOne({ _id: id }, function (err, character) {
         if (err) {
@@ -30,6 +31,19 @@ app.get("/characters/:id", (req, res) => {
             }
         }
     });
+})
+.delete((req, res) => {
+    Character.deleteOne({_id: id}, function(err, character) {
+        if (err) {
+            res.json({"error": err});
+        } else {
+            if (character) {
+                res.json({"Successfull": "Character is deleted!"});
+            } else {
+                res.json({ "empty": "No character found on this id" });
+            }
+        }
+    })
 });
 
 app.route("/characters")
