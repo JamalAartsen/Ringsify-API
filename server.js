@@ -27,7 +27,7 @@ app.route("/characters/:id")
                 if (character) {
                     res.json(character);
                 } else {
-                    res.json({ "empty": "No character found on this id" });
+                    res.json({ "Empty": "No character found on this id" });
                 }
             }
         });
@@ -39,12 +39,26 @@ app.route("/characters/:id")
                 res.json({ "error": err });
             } else {
                 if (character) {
-                    res.json({ "Successfull": "Character is deleted!" });
+                    res.json({ "Successful deleted": "Character is deleted!" });
                 } else {
-                    res.json({ "empty": "No character found on this id" });
+                    res.json({ "Empty": "No character found on this id" });
                 }
             }
         })
+    })
+    .patch((req, res) => {
+        const id = req.params.id;
+        Character.updateOne({ _id: id }, function (err, character) {
+            if (err) {
+                res.json({ "error": err });
+            } else {
+                if (character) {
+                    res.json({ "Successful edit": "Character is updated! " })
+                } else {
+                    res.json({ "Empty": "No character found on this id" });
+                }
+            }
+        });
     });
 
 app.route("/characters")
@@ -124,9 +138,9 @@ app.route("/characters")
 
         character.save((err) => {
             if (err) {
-                res.send(err);
+                res.jsont({ "Error": err.message });
             } else {
-                res.send("Successful added a new character!");
+                res.json({ "Successful added": "Successful added a new character!" });
             }
         });
     });
