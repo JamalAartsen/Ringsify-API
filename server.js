@@ -48,7 +48,19 @@ app.route("/characters/:id")
     })
     .patch((req, res) => {
         const id = req.params.id;
-        Character.updateOne({ _id: id }, function (err, character) {
+        const character = new Character({
+            name: req.body.name,
+            imageUrl: req.body.imageUrl,
+            description: req.body.description,
+            race: req.body.race,
+            birth: req.body.birth,
+            death: req.body.death,
+            realm: req.body.realm,
+            culture: req.body.culture,
+            fandomUrl: req.body.fandomUrl,
+        });
+
+        Character.updateOne({ _id: id }, { "$set": character }, function (err, character) {
             if (err) {
                 res.json({ "Error": err.message });
             } else {
