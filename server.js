@@ -60,7 +60,7 @@ app.route("/characters/:id")
             fandomUrl: req.body.fandomUrl,
         });
 
-        Character.updateOne({ _id: id }, { "$set": character }, function (err, character) {
+        Character.updateOne({ _id: id }, { "$set": { character } }, function (err, character) {
             if (err) {
                 res.json({ "Error": err.message });
             } else {
