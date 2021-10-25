@@ -50,7 +50,7 @@ app.route("/characters/:id")
         const id = req.params.id;
         Character.updateOne({ _id: id }, function (err, character) {
             if (err) {
-                res.json({ "error": err });
+                res.json({ "Error": err.message });
             } else {
                 if (character) {
                     res.json({ "Successful edit": "Character is updated! " })
